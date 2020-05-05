@@ -1,25 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Button } from 'antd';
+import { Layout } from 'antd';
 
+
+import 'antd/dist/antd.css';
+import Menus from './component/Menu';
+const { Header, Footer, Sider, Content } = Layout;
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
+    <div style={{minHeight:'100vh'}}>
+
+    <Layout style={{minHeight:'100vh'}}>
+      <Header>Headers</Header>
+      <Layout>
+        <Sider style={{overflow:'hidden'}}><Menus /></Sider>
+        <Content>Content</Content>
+      </Layout>
+
+    </Layout>
     </div>
+    
+
+
   );
 }
 
