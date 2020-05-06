@@ -1,25 +1,26 @@
 import React from 'react';
-import { Button } from 'antd';
-import { Layout } from 'antd';
-
-
 import 'antd/dist/antd.css';
-import Menus from './component/Menu';
-const { Header, Footer, Sider, Content } = Layout;
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Navbar from './component/Header/Navbar';
+import Home from './Pages/Home/Home';
+import Upload from './Pages/Upload/Upload'
+import Videos from './Pages/Videos/Videos'
+import { Layout, Menu, Breadcrumb } from 'antd';
+const { Header, Content, Footer } = Layout;
 function App() {
   return (
   
-    <div style={{minHeight:'100vh'}}>
+  <div>
+    <Navbar></Navbar>
 
-    <Layout style={{minHeight:'100vh'}}>
-      <Header>Headers</Header>
-      <Layout>
-        <Sider style={{overflow:'hidden'}}><Menus /></Sider>
-        <Content>Content</Content>
-      </Layout>
-
-    </Layout>
-    </div>
+      <Content style={{ padding: '0 50px' }}>
+    <Switch>
+    <Route exact path='/' component={Home} />
+    <Route exact path='/upload' component={Upload} />
+    <Route exact path='/Videos' component={Videos} />
+    </Switch>
+    </Content>
+  </div>
     
 
 
