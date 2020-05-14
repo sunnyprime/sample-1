@@ -7,4 +7,4 @@ export const selectAlerts = createSelector(
   message => alert.message
 );
 
-console.log("data");
+// console.log("data");

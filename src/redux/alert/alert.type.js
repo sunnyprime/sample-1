@@ -1,8 +1,6 @@
 const AlertActionTypes = {
-    SUCCESS: 'SUCESS',
-    INFO:'INFO',
-    WARNING:"WARNING",
-    ERROR:"ERROR"
+    SET_ALERT:'SET_ALERT',
+    REMOVE_ALERT: 'REMOVE_ALERT'
 }
 
 export default AlertActionTypes;

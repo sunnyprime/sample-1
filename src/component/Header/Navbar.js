@@ -8,10 +8,11 @@ export default function Navbar() {
     return (
 <Header>
 
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+      <Menu theme="dark" mode="horizontal">
         <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
         <Menu.Item key="2"><Link to="/upload">upload</Link></Menu.Item>
         <Menu.Item key="3"><Link to="/videos">Videos</Link></Menu.Item>
+        <Menu.Item key="4"><Link to="/login">Login</Link></Menu.Item>
       </Menu>
     </Header>
     )

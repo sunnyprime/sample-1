@@ -5,6 +5,7 @@ import Navbar from './component/Header/Navbar';
 import Home from './Pages/Home/Home';
 import Upload from './Pages/Upload/Upload'
 import Videos from './Pages/Videos/Videos'
+import Login from './Pages/Login'
 import { Layout} from 'antd';
 import Alerts from './component/Alerts';
 const {Content} = Layout;
@@ -23,6 +24,8 @@ function App() {
     <Route exact path='/' component={Home} />
     <Route exact path='/upload' component={Upload} />
     <Route exact path='/Videos' component={Videos} />
+    <Route exact path='/Login' component={Login} />
+    <Route exact path='/signup' component={Videos} />
     </Switch>
     </Content>
   </div>

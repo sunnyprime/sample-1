@@ -4,36 +4,37 @@ import { connect } from 'react-redux';
 // import { createSelector } from 'reselect'
 // import { selectAlerts } from '../redux/alert/alert.selectors'
 
-const alertstyle = {
-    Width:'60vw',
+// const alertstyle = {
+//     Width:'60vw',
     
+// }
+
+function Alerts({alert}) {
+    if(alert.length>0){ 
+    console.log(alert);
+    return(<div style={{position: 'absolute',margin:'auto'}}>
+    {alert.map(alerts => (
+        <div style={{margin:'10px 100px 10px 100px',width:'80vw'}}>
+        <Alert message={alerts.msg} type={alerts.alertType} showIcon />
+        </div>
+    ))}
+
+    </div>)
+    }
+    else{
+        return(<></>)
+    }
+
 }
 
-function Alerts({states,message,type,hidden}) {
-    console.log(states);
-    console.log(message);
-    
-    
-    return (
-        <div>
-        <div style={alertstyle}>
-            <Alert message={message} type={type} showIcon />
+const mapDispatchToProps = (dispatch) => {
+    return {
+    //   signIn: (creds) => dispatch(signIn(creds))
+    }
+  }
 
-
-        </div>
-        </div>
-    )
-}
-
-const mapStateToProps = (state) => ({
-    states:state,
-    hidden:state.alerts.hidden,
-    type:state.alerts.type,
-    message:state.alerts.message
+const mapStateToProps = state => ({
+    alert: state.alerts
 })
 
-// const mapStateToProps = createSelector({
-//     message: selectAlerts
-//   });
-
-export default connect(mapStateToProps,null)(Alerts)
+export default connect(mapStateToProps,mapDispatchToProps)(Alerts)

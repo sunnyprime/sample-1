@@ -1,20 +1,16 @@
-import CartActionTypes from './cart.types';
+import AlertActionTypes from './alert.type'
+import uuid from 'uuid';
 
-export const toggleCartHidden = () => ({
-  type: CartActionTypes.TOGGLE_CART_HIDDEN
-});
 
-export const addItem = item => ({
-  type: CartActionTypes.ADD_ITEM,
-  payload: item
-});
+export const setAlert = (msg, alertType,timeout=3000) => dispatch => {
+    const id = uuid.v4()
+    // console.log(msg);
+    
+    // dispatch({ type:REMOVE_ALERT, payload:id })
+    dispatch({
+        type: AlertActionTypes.SET_ALERT,
+        payload: {msg, alertType, id}
+    })
+    setTimeout(() => dispatch({ type:AlertActionTypes.REMOVE_ALERT, payload:id }), timeout )
 
-export const removeItem = item => ({
-  type: CartActionTypes.REMOVE_ITEM,
-  payload: item
-});
-
-export const clearItemFromCart = item => ({
-  type: CartActionTypes.CLEAR_ITEM_FROM_CART,
-  payload: item
-});
+}
