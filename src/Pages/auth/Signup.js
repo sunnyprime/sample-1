@@ -1,5 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Form, Input, Button, Checkbox } from 'antd';
+import './Login.scss';
+import { signIn } from '../../redux/auth/auth.action'
+
 const layout = {
     labelCol: {
       span: 8,
@@ -15,9 +19,12 @@ const layout = {
     },
   };
 
-function Login() {
+function Signup(props) {
+  console.log(props);
+  
     const onFinish = values => {
         console.log('Success:', values);
+        props.signIn(values)
       };
     
       const onFinishFailed = errorInfo => {
@@ -26,6 +33,8 @@ function Login() {
     
     return (
         <div style={{padding:'20vh 20vw 8vh 10vw',marginRight:'100px'}}>
+          <h3 style={{textAlign:'center'}}>SIGNUP</h3>
+          <br />
             <Form
       {...layout}
       name="basic"
@@ -36,12 +45,13 @@ function Login() {
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="Username"
-        name="username"
+        label="Email"
+        name="email"
         rules={[
           {
+            type:'email',
             required: true,
-            message: 'Please input your username!',
+            message: 'Please input your email!',
           },
         ]}
       >
@@ -75,4 +85,16 @@ function Login() {
     )
 }
 
-export default Login
+const mapStateToProps = (state) => {
+  return{
+    authError: state.auth.authError
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signIn: (creds) => dispatch(signIn(creds))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)

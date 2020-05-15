@@ -7,6 +7,7 @@ import { firebaseReducer } from 'react-redux-firebase'
 
 // import userReducer from './user/user.reducer';
 import alertsReducer from './alert/alert.reducer'
+import authReducer from '../redux/auth/auth.reducer'
 
 const persistConfig = {
   key: 'root',
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     alerts: alertsReducer,
     firestore: firestoreReducer,
     firebase: firebaseReducer,
+    auth: authReducer,
 
 });
 

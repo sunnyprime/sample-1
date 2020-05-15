@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware,compose } from 'redux';
 import { persistStore } from 'redux-persist';
 import logger from 'redux-logger';
-// import { composeWithDevTools } from "redux-devtools-extension";
+import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from 'redux-thunk';
 import { reduxFirestore, getFirestore } from 'redux-firestore';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'development') {
 // export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middlewares,reactReduxFirebase(fbConfig),reduxFirestore(fbConfig))));
 
 export const store = createStore(rootReducer,
-  compose(
+  composeWithDevTools(
     applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
     reactReduxFirebase(fbConfig), // redux binding for firebase
     reduxFirestore(fbConfig) // redux bindings for firestore

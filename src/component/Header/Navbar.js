@@ -1,19 +1,50 @@
 import React from 'react'
 import { Layout, Menu } from 'antd';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import {signOut} from '../../redux/auth/auth.action'
+import './Navbar.scss'
 
 const { Header } = Layout;
 
-export default function Navbar() {
+function Navbar(props) {
+  const { auth } = props;
+  console.log(auth);
+  
     return (
-<Header>
-
+<Header className="container">
+      <div style={{color:'white'}}>LOGO</div>
       <Menu theme="dark" mode="horizontal">
-        <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
-        <Menu.Item key="2"><Link to="/upload">upload</Link></Menu.Item>
-        <Menu.Item key="3"><Link to="/videos">Videos</Link></Menu.Item>
-        <Menu.Item key="4"><Link to="/login">Login</Link></Menu.Item>
+        
+        <Menu.Item><NavLink to="/">Home</NavLink></Menu.Item>
+        <Menu.Item><NavLink to="/upload">upload</NavLink></Menu.Item>
+        <Menu.Item><NavLink to="/videos">Videos</NavLink></Menu.Item>
+        
+       
       </Menu>
+      <Menu theme="dark" mode="horizontal">
+      
+        <Menu.Item><NavLink to="/login">Login</NavLink></Menu.Item>
+        <Menu.Item><NavLink to="/signup">Signup</NavLink></Menu.Item>
+        <Menu.Item><NavLink to="/" onClick={props.signOut}>Logout</NavLink></Menu.Item>
+        
+        
+        </Menu>
     </Header>
     )
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch(signOut())
+  }
+}
+
+const mapStateToProps = (state) => {
+  // console.log(state);
+  return{
+    auth: state.firebase.auth
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Navbar)

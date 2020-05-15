@@ -5,7 +5,8 @@ import Navbar from './component/Header/Navbar';
 import Home from './Pages/Home/Home';
 import Upload from './Pages/Upload/Upload'
 import Videos from './Pages/Videos/Videos'
-import Login from './Pages/Login'
+import Login from './Pages/auth/Login'
+import Signup from './Pages/auth/Signup'
 import { Layout} from 'antd';
 import Alerts from './component/Alerts';
 const {Content} = Layout;
@@ -17,7 +18,7 @@ function App() {
   
   <div>
     <Navbar></Navbar>
-    <Alerts />
+    <Alerts key="1"/>
 
       <Content style={{ padding: '0 50px' }}>
     <Switch>
@@ -25,7 +26,9 @@ function App() {
     <Route exact path='/upload' component={Upload} />
     <Route exact path='/Videos' component={Videos} />
     <Route exact path='/Login' component={Login} />
-    <Route exact path='/signup' component={Videos} />
+    <Route exact path='/signup' component={Signup} />
+    
+
     </Switch>
     </Content>
   </div>
