@@ -9,6 +9,7 @@ import Login from './Pages/auth/Login'
 import Signup from './Pages/auth/Signup'
 import { Layout} from 'antd';
 import Alerts from './component/Alerts';
+import PrivateRoute from './utils/PrivateRoute';
 const {Content} = Layout;
 
 
@@ -19,12 +20,12 @@ function App() {
   <div>
     <Navbar></Navbar>
     <Alerts key="1"/>
-
+    
       <Content style={{ padding: '0 50px' }}>
     <Switch>
     <Route exact path='/' component={Home} />
     <Route exact path='/upload' component={Upload} />
-    <Route exact path='/Videos' component={Videos} />
+    <PrivateRoute exact path='/Videos' component={Videos} />
     <Route exact path='/Login' component={Login} />
     <Route exact path='/signup' component={Signup} />
     
